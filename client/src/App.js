@@ -1,28 +1,21 @@
 import React from 'react';
+
 import './App.css';
 import {BrowserRouter, Routes, Route } from 'react-router-dom'
-import Homepage from './views/Homepage';
+import Homepage from './views/Homepage'
 
-
-
-
-
-
-
-
-
-
-
-const App = () => {
+function App() {
 
   return (
-    <BrowserRouter>
-      <h1>test</h1>
+
+    <BrowserRouter> 
+      <h1>te st</h1>
       <Routes>
-        <Route path = '/' component={Homepage} />
+        <Route path = '/' element={<Homepage />} />
+        <Route exact path = '/test' element={Homepage} />
       </Routes>
     </BrowserRouter>
-  );
+    );
 }
 
 export default App;

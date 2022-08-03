@@ -9,7 +9,6 @@ function App() {
   return (
 
     <BrowserRouter> 
-      <h1>te st</h1>
       <Routes>
         <Route path = '/' element={<Homepage />} />
         <Route exact path = '/test' element={Homepage} />

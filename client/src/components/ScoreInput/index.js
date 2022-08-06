@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./style.css"
 
-export default function ScoreInput() {
+export default function ScoreInput({ topScore = 10, lowScore = 0 }) {
 
     const [judge1, setJudge1] = useState()
     const [judge2, setJudge2] = useState()
@@ -12,17 +12,29 @@ export default function ScoreInput() {
 
     useEffect(() => {
         let scores = [judge1, judge2, judge3, judge4, judge5]
-        scores.sort((a, b) => a-b)
-        scores.pop()
-        scores.shift()
-        scores = (scores.reduce((a, b) => a + b) / scores.length).toFixed(2)
-        setFinalScore(scores)
+        if (scores.includes(undefined)) {
+            console.log('contained undefined');
+            setFinalScore(`Need score from Judge ${scores.indexOf(undefined) +1 }`)
+        }
+        else {
+            scores.sort((a, b) => a - b)
+            scores.pop()
+            scores.shift()
+                scores = (scores.reduce((a, b) => a + b) / scores.length).toFixed(2)
+                if (judge1 > 10 || judge2 > 10 || judge3 > 10 || judge4 > 10 || judge5 > 10) setFinalScore(`A score is higher than ${topScore}`)
+                else if (judge1 < 0 || judge2 < 0 || judge3 < 0 || judge4 < 0 || judge5 < 0) setFinalScore(`A score is lower than ${lowScore}`)
+                else (
+
+                    scores === 'NaN' ? setFinalScore('More Scores Needed') : setFinalScore(scores)
+                )
+
+        }
     }, [judge1, judge2, judge3, judge4, judge5])
 
 
     return (
         <div>
-<h3> Judge 1</h3>
+            <h3> Judge 1</h3>
             <input
                 id="judge1"
                 type="number"

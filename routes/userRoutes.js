@@ -61,6 +61,7 @@ router.post('/logout', (req, res) => {
 // Creates User
 router.post('/signup', async (req, res) => {
     try {
+        console.log(req.body);
         const userData = await User.create(req.body);
         req.session.save(() => {
             req.session.user_id = userData.id;

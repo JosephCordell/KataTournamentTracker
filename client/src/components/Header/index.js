@@ -5,8 +5,6 @@ const Header = ({ user, setUser, loggedIn }) => {
     const logout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('loggedIn');
-        localStorage.removeItem('todo');
-        localStorage.removeItem('ratings');
 
         document.location.replace('/');
     };

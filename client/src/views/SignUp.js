@@ -11,7 +11,7 @@ export default function SignUp() {
 
     const handleSignUp = (e) => {
         e.preventDefault();
-
+        console.log(JSON.stringify({email, password}));
         const fetchData = async () => {
             await fetch('/api/users/signup', {
                 method: 'POST',
@@ -22,9 +22,7 @@ export default function SignUp() {
                 .then((data) => {
                     localStorage.setItem(`loggedIn`, true);
                     localStorage.setItem(`token`, data.token);
-                    localStorage.setItem('todo', null);
-                    localStorage.setItem('ratings', null);
-                    document.location.replace('/user');
+                    document.location.replace('/');
                 })
                 .catch((err) => {
                     console.log(err);

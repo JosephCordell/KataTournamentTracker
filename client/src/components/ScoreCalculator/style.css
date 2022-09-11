@@ -1,0 +1,11 @@
+.scoreInput{
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+    margin: auto;
+
+}
+
+input {
+    width: 50%;
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./style.css"
 
-export default function ScoreInput({ topScore = 10, lowScore = 0 }) {
+export default function ScoreCalculator({ topScore = 10, lowScore = 0 }) {
 
     const [judge1, setJudge1] = useState()
     const [judge2, setJudge2] = useState()
@@ -33,7 +33,7 @@ export default function ScoreInput({ topScore = 10, lowScore = 0 }) {
 
 
     return (
-        <div>
+        <div className="scoreInput">
             <h3> Judge 1</h3>
             <input
                 id="judge1"

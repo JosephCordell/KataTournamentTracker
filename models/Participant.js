@@ -10,6 +10,13 @@ Participant.init(
             allowNull: false,
             primaryKey: true,
         },
+        participant_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'participant',
+                key: 'id',
+            },
+        },
         first_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -33,15 +40,8 @@ Participant.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'participants',
+        modelName: 'participant',
     }
 )
-
-/* Participant.associate = (models) => {
-    Participant.hasMany(Scores.Participant, {
-        as: 'participant',
-        foreignKey: "participantId",
-    })
-} */
 
 module.exports = Participant

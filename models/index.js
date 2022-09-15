@@ -1,2 +1,14 @@
-const { Sequelize } = require('sequelize')
-const env = process.env.NODE_ENV || 'development'
+const User = require('./User');
+const Participant = require('./Participant')
+const ScoresEmpty = require('./ScoresEmpty')
+const ScoresWeapon = require('./ScoresWeapon')
+
+Participant.hasMany(ScoreEmpty, {
+    foreignKey: 'participant_id'
+})
+Participant.hasMany(ScoreWeapon, {
+    foreignKey: 'participant_id'
+})
+
+
+module.exports = { User, Participant, ScoreEmpty, ScoreWeapon};

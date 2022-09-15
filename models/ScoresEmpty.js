@@ -1,12 +1,22 @@
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connections');
 
+class ScoresEmpty extends Model {}
 
-module.exports = (sequelize, DataTypes) => {
-    const ScoresEmpty = sequelize.define('ScoresEmpty', {
+ScoresEmpty.init(
+    {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
+        },
+        participant_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'participant',
+                key: 'id',
+            },
         },
         score1: {
             type: DataTypes.FLOAT(2),
@@ -26,9 +36,14 @@ module.exports = (sequelize, DataTypes) => {
         total_score: {
             type: DataTypes.FLOAT(2),
         },
-    })
-    ScoresEmpty.associate = (models) => {
-        ScoresEmpty.belongsTo(models.Participant)
+    },
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'scoresempty',
     }
-    return ScoresEmpty
-}
+)
+
+module.exports = ScoresEmpty

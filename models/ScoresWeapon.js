@@ -1,6 +1,10 @@
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connections');
 
-module.exports = (sequelize, DataTypes) => {
-    const ScoresWeapons = sequelize.define('ScoresWeapons', {
+class ScoresWeapon extends Model {}
+
+ScoresWeapon.init(
+    {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -25,9 +29,13 @@ module.exports = (sequelize, DataTypes) => {
         total_score: {
             type: DataTypes.FLOAT(2),
         },
-    })
-    ScoresWeapons.associate = (models) => {
-        ScoresWeapons.belongsTo(models.Participant)
+    },
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'scoresweapon',
     }
-    return ScoresWeapons
-}
+)
+module.exports = ScoresWeapon

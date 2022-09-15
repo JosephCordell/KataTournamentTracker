@@ -1,3 +1,2 @@
-const User = require('./User');
-
-module.exports = { User };
+const { Sequelize } = require('sequelize')
+const env = process.env.NODE_ENV || 'development'

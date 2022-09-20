@@ -1,23 +1,24 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connections');
+const Participant = require('./Participant')
 
-class ScoresEmpty extends Model {}
+class EmptyScores extends Model {}
 
-ScoresEmpty.init(
+EmptyScores.init(
     {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
-        },
+        },/* 
         participant_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'participant',
                 key: 'id',
             },
-        },
+        }, */
         score1: {
             type: DataTypes.FLOAT(2),
         },
@@ -42,8 +43,13 @@ ScoresEmpty.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'scoresempty',
+        modelName: 'EmptyScores',
     }
 )
 
-module.exports = ScoresEmpty
+EmptyScores.associate = function (models) {
+    Scores.hasOne(models.Participant)
+}
+
+
+module.exports = EmptyScores

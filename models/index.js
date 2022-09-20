@@ -1,14 +1,16 @@
 const User = require('./User');
 const Participant = require('./Participant')
-const ScoresEmpty = require('./ScoresEmpty')
-const ScoresWeapon = require('./ScoresWeapon')
+const EmptyScores = require('./EmptyScores')
+const WeaponScores = require('./WeaponScores')
 
-Participant.hasMany(ScoreEmpty, {
+EmptyScores.belongsTo(Participant, {
+    foreignKey: "id",
     foreignKey: 'participant_id'
 })
-Participant.hasMany(ScoreWeapon, {
+WeaponScores.belongsTo(Participant, {
+    foreignKey: "id",
     foreignKey: 'participant_id'
 })
 
 
-module.exports = { User, Participant, ScoreEmpty, ScoreWeapon};
+module.exports = { User, Participant, EmptyScores, WeaponScores};

@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connections');
 
-class ScoresWeapon extends Model {}
+class WeaponScores extends Model {}
 
-ScoresWeapon.init(
+WeaponScores.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -11,6 +11,13 @@ ScoresWeapon.init(
             primaryKey: true,
             autoIncrement: true,
         },
+/*         participant_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'participant',
+                key: 'id',
+            },
+        }, */
         score1: {
             type: DataTypes.FLOAT(2),
         },
@@ -35,7 +42,7 @@ ScoresWeapon.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'scoresweapon',
+        modelName: 'WeaponScores',
     }
 )
-module.exports = ScoresWeapon
+module.exports = WeaponScores

@@ -1,5 +1,7 @@
 const { Model, DataTypes } = require ('sequelize')
 const sequelize = require('../config/connections')
+const EmptyScores = require('./EmptyScores')
+
 
 class Participant extends Model {}
 
@@ -9,19 +11,17 @@ Participant.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-        },
-        participant_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'participant',
-                key: 'id',
-            },
+            autoIncrement: true,
         },
         first_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         last_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        age_group: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -32,8 +32,15 @@ Participant.init(
         rank: {
             type: DataTypes.STRING,
             allowNull: false,
-        }
-
+        }, 
+        empty_score: {
+            type: DataTypes.FLOAT,
+            allowNull:true
+        },
+        weapon_score: {
+            type: DataTypes.FLOAT,
+            allowNull:true
+        },
     },
     {
         sequelize,
@@ -43,5 +50,7 @@ Participant.init(
         modelName: 'participant',
     }
 )
-
+EmptyScores.associate = function (models) {
+    EmptyScores.belongsTo(models.Participant, {foreignKey: 'particpantId'})
+}
 module.exports = Participant

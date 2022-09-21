@@ -25,10 +25,6 @@ Participant.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        division: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         rank: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -51,6 +47,6 @@ Participant.init(
     }
 )
 EmptyScores.associate = function (models) {
-    EmptyScores.belongsTo(models.Participant, {foreignKey: 'particpantId'})
+    EmptyScores.belongsTo(models.Participant, {foreignKey: 'participantId'})
 }
 module.exports = Participant

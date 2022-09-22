@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import AddParticipantModal from '../AddParticipantModal';
 import './style.css';
 
 const Header = ({ user, setUser, loggedIn }) => {
+    const [isOpen, setIsOpen] = useState(false)
+    const [addParticipantModal, setAddParticipantModal] = useState(false);
+
+
     const logout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('loggedIn');
@@ -9,11 +14,16 @@ const Header = ({ user, setUser, loggedIn }) => {
         document.location.replace('/');
     };
 
+    const openModal = () => {
+        setAddParticipantModal(!addParticipantModal)
+    }
+
+
     return (
         <nav className={'navbar navbar-expand-lg navbar-dark'} style={{ backgroundColor: 'black' }}>
             <div className={'container-fluid'}>
                 <a className={'navbar-brand'} href="/">
-                    Kata Tournament 
+                    Kata Tournament
                 </a>
                 <button
                     className={'navbar-toggler'}
@@ -35,9 +45,8 @@ const Header = ({ user, setUser, loggedIn }) => {
                         </li>
                         {loggedIn ? (
                             <li className={'nav-item'}>
-                                <a className={'nav-link'} href="/user">
-                                    My Lists
-                                </a>
+                                <button onClick={openModal}> Add Participant</button>
+                                <AddParticipantModal addParticipantModal={addParticipantModal} setAddParticipantModal= { setAddParticipantModal} />
                             </li>
                         ) : (
                             ''

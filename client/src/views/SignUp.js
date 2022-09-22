@@ -54,10 +54,10 @@ export default function SignUp() {
                 </div>
             </div>
 
-            <div className={'container-user'}>
+            <div className='container-user'>
                 <h2>Signup</h2>
 
-                <form className={'form signup-form'} onSubmit={(e) => handleSignUp(e)}>
+                <form className='form signup-form' onSubmit={(e) => handleSignUp(e)}>
                     <div className="form-group">
                         <label htmlFor="email" className="form-label">
                             Email:

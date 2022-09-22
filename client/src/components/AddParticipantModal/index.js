@@ -8,15 +8,19 @@ const AddParticipantModal = ({ addParticipantModal, setAddParticipantModal }) =>
     const [lastName, setLastName] = useState('')
     const [ageGroup, setAgeGroup] = useState('Kids')
     const [rank, setRank] = useState('White Belt')
+    const [weaponsDivision, setWeaponsDivision] = useState('no')
     const [hideModal, setHideModal] = useState(true);
 
 
     const addParticipant = (e) => {
         e.preventDefault();
+        console.log(weaponsDivision);
+        console.log(typeof(weaponsDivision));
         const participantDetails = {
             first_name: firstName,
             last_name: lastName,
             age_group: ageGroup,
+            weapons_division: weaponsDivision,
             rank: rank,
         }
         console.log(JSON.stringify(participantDetails));
@@ -34,6 +38,10 @@ const AddParticipantModal = ({ addParticipantModal, setAddParticipantModal }) =>
                 });
         }
         fetchData()
+    }
+
+    const handleToggle = () => {
+        // setWeaponsDivision(!weaponsDivision);
     }
 
     return (
@@ -98,6 +106,18 @@ const AddParticipantModal = ({ addParticipantModal, setAddParticipantModal }) =>
                                             <option value='Blue Belt'> Blue Belt </option>
                                             <option value='Green Belt'> Green Belt </option>
                                             <option value='Brown Belt'> Brown Belt </option>
+                                        </select>
+                                    </div>
+                                    <div className='form-group'>
+                                        <label className='form-label'>
+                                            Weapons Division:
+                                        </label>
+                                        <select
+                                            value={weaponsDivision}
+                                            onChange={(e) => setWeaponsDivision(e.target.value)}
+                                        >
+                                            <option value='no'> No </option>
+                                            <option value='yes'> Yes </option>
                                         </select>
                                     </div>
                                     <div className='form-group'>

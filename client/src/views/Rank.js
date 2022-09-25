@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 export default function Rank() {
 
     const { rank } = useParams()
-    const { age, setAge } = useState(123)
+    const { age, setAge } = useState()
     
     const changeAge = (age) => {
         setAge(age)

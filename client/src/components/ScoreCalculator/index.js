@@ -13,7 +13,6 @@ export default function ScoreCalculator({ topScore = 10, lowScore = 0 }) {
     useEffect(() => {
         let scores = [judge1, judge2, judge3, judge4, judge5]
         if (scores.includes(undefined)) {
-            console.log('contained undefined');
             setFinalScore(`Need score from Judge ${scores.indexOf(undefined) +1 }`)
         }
         else {

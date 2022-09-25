@@ -14,8 +14,6 @@ const AddParticipantModal = ({ addParticipantModal, setAddParticipantModal }) =>
 
     const addParticipant = (e) => {
         e.preventDefault();
-        console.log(weaponsDivision);
-        console.log(typeof(weaponsDivision));
         const participantDetails = {
             first_name: firstName,
             last_name: lastName,
@@ -23,7 +21,6 @@ const AddParticipantModal = ({ addParticipantModal, setAddParticipantModal }) =>
             weapons_division: weaponsDivision,
             belt_color: rank,
         }
-        console.log(JSON.stringify(participantDetails));
         const fetchData = async () => {
             await fetch('/api/tournament/addParticipant', {
                 method: 'POST',

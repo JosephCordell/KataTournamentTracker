@@ -9,15 +9,12 @@ export default function Divisions() {
         async function fetchData() {
             await axios.get('/api/tournament/divisions')
                 .then((response) => {
-                    console.log('test');
                     let data = []
-                    console.log(response.data);
                     for (let i = 0; i < response.data.length; i++) {
                         data.push(response.data[i]['belt_color'])
                                                 
                     }
                     setGroups(data);
-                    console.log('data', data);
 
                 })
                 .catch((error) => console.log(error));

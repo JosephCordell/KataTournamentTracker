@@ -25,7 +25,7 @@ Participant.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        rank: {
+        belt_color: {
             type: DataTypes.STRING,
             allowNull: false,
         }, 

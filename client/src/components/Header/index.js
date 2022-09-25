@@ -43,6 +43,11 @@ const Header = ({ user, setUser, loggedIn }) => {
                                 calculator
                             </a>
                         </li>
+                        <li className={'nav-item'}>
+                            <a className={'nav-link'} href="/divisions">
+                                Divisions
+                            </a>
+                        </li>
                         {loggedIn ? (
                             <li className={'nav-item'}>
                                 <button onClick={openModal}> Add Participant</button>

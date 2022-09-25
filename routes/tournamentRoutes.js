@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Participant} = require('../models')
+const Sequelize = require('sequelize')
 
 // const { authorization } = require('../config/authorization')
 const jwt = require('jsonwebtoken')
@@ -68,7 +69,11 @@ router.get('/participant', async (req, res) => {
 router.get('/divisions', async (req, res) => {
     try {
         console.log('test');
-        const divisions = await Participant.findAll()
+        const divisions = await Participant.findAll({
+            attributes: [
+                [Sequelize.fn('DISTINCT', Sequelize.col('belt_color')), 'belt_color']
+            ]
+        })
         console.log('found divisions');
         console.log(divisions);
         res.status(200).json(divisions)

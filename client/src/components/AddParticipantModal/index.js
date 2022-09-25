@@ -21,7 +21,7 @@ const AddParticipantModal = ({ addParticipantModal, setAddParticipantModal }) =>
             last_name: lastName,
             age_group: ageGroup,
             weapons_division: weaponsDivision,
-            rank: rank,
+            belt_color: rank,
         }
         console.log(JSON.stringify(participantDetails));
         const fetchData = async () => {
@@ -101,11 +101,11 @@ const AddParticipantModal = ({ addParticipantModal, setAddParticipantModal }) =>
                                             value={rank}
                                             onChange={(e) => setRank(e.target.value)}
                                         >
-                                            <option value='White Belt'> White Belt </option>
-                                            <option value='Yellow Belt'> Yellow Belt </option>
-                                            <option value='Blue Belt'> Blue Belt </option>
-                                            <option value='Green Belt'> Green Belt </option>
-                                            <option value='Brown Belt'> Brown Belt </option>
+                                            <option value='White'> White Belt </option>
+                                            <option value='Yellow'> Yellow Belt </option>
+                                            <option value='Blue'> Blue Belt </option>
+                                            <option value='Green'> Green Belt </option>
+                                            <option value='Brown'> Brown Belt </option>
                                         </select>
                                     </div>
                                     <div className='form-group'>

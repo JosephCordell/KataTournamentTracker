@@ -11,8 +11,7 @@ export default function Divisions() {
                 .then((response) => {
                     let data = []
                     for (let i = 0; i < response.data.length; i++) {
-                        data.push(response.data[i]['belt_color'])
-                                                
+                        data.push(response.data[i]['belt_color'])                        
                     }
                     setGroups(data);
 

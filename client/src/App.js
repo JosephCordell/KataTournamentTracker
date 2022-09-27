@@ -43,6 +43,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/divisions' element={<Divisions/>} />
         <Route path='/divisions/:rank' element={<Rank/>} />
+        <Route path='/divisions/:rank/:age' element={<Rank/>} />
       </Routes>
     </BrowserRouter>
   );

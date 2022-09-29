@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Participant, EmptyScores} = require('../models')
+const { Participant, EmptyScores } = require('../models')
 const Sequelize = require('sequelize')
 
 // const { authorization } = require('../config/authorization')
@@ -61,4 +61,25 @@ router.get('/divisions', async (req, res) => {
         res.status(400).json(err);
     }
 })
+
+router.get('/divisions/group', async (req, res) => {
+    try {
+        console.log('Got here');
+        console.log(req.body);
+        console.log(req.body.belt_color);
+        let group = await Participant.findAll({ where: { belt_color: req.body.belt_color, age_group: req.body.age_group } })
+
+        res.status(200).json(group)
+    } catch (err) {
+        res.status(400).json(err);
+    }
+})
+
+
+
+
+
+
+
+
 module.exports = router

@@ -17,7 +17,6 @@ export default function Divisions() {
 
                 })
                 .catch((error) => console.log(error));
-
         }
         fetchData()
     }, [])

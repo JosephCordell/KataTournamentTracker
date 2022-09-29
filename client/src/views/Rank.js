@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 export default function Rank() {
 
     const { rank, age } = useParams()
+    const {group, setGroup} = useState([])
     let link = '/divisions/' + rank
 
     // const { age, setAge } = useState(25)
@@ -18,8 +19,14 @@ export default function Rank() {
     useEffect(() => {
         if (age) {
             console.log('got age twice', age);
+            
         }
     }, age)
+
+
+
+
+
     return (
         <div>
             <div>age {age}</div>

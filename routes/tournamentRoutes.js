@@ -64,12 +64,19 @@ router.get('/divisions', async (req, res) => {
 
 router.get('/divisions/group', async (req, res) => {
     try {
-        console.log('Got here');
-        console.log(req.body);
-        console.log(req.body.belt_color);
         let group = await Participant.findAll({ where: { belt_color: req.body.belt_color, age_group: req.body.age_group } })
-
         res.status(200).json(group)
+    } catch (err) {
+        res.status(400).json(err);
+    }
+})
+
+router.get('divisions/weapons', async (req, res) => {
+    try {
+        console.log('test');
+        console.log(req.body);
+        let weapons = await Participant.findAll({ where: { age_group: req.body.age_group, weapons_division: true}})
+        res.status(200).json(weapons)
     } catch (err) {
         res.status(400).json(err);
     }

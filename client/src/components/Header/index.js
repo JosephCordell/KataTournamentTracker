@@ -40,7 +40,7 @@ const Header = ({ user, setUser, loggedIn }) => {
                     <ul className={'navbar-nav'}>
                         <li className={'nav-item'}>
                             <a className={'nav-link'} href="/calculator">
-                                calculator
+                                Calculator
                             </a>
                         </li>
                         <li className={'nav-item'}>

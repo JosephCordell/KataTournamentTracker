@@ -62,7 +62,20 @@ router.get('/divisions', async (req, res) => {
     }
 })
 
-router.get('/divisions/group', async (req, res) => {
+router.put('/divisions/weapons', async (req, res) => {
+    try {
+        console.log('TESTESe');
+        console.log(req.body);
+        let weapons = await Participant.findAll({ where: { age_group: req.body.age_group, weapons_division: 'yes'}})
+        console.log('weapons', weapons);
+        res.status(200).json(weapons)
+    } catch (err) {
+        console.log('WE GOT AN ERROR');
+        res.status(400).json(err);
+    }
+})
+
+router.put('/divisions/group', async (req, res) => {
     try {
         let group = await Participant.findAll({ where: { belt_color: req.body.belt_color, age_group: req.body.age_group } })
         res.status(200).json(group)
@@ -71,16 +84,6 @@ router.get('/divisions/group', async (req, res) => {
     }
 })
 
-router.get('divisions/weapons', async (req, res) => {
-    try {
-        console.log('test');
-        console.log(req.body);
-        let weapons = await Participant.findAll({ where: { age_group: req.body.age_group, weapons_division: true}})
-        res.status(200).json(weapons)
-    } catch (err) {
-        res.status(400).json(err);
-    }
-})
 
 
 

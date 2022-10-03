@@ -64,10 +64,7 @@ router.get('/divisions', async (req, res) => {
 
 router.put('/divisions/weapons', async (req, res) => {
     try {
-        console.log('TESTESe');
-        console.log(req.body);
         let weapons = await Participant.findAll({ where: { age_group: req.body.age_group, weapons_division: 'yes'}})
-        console.log('weapons', weapons);
         res.status(200).json(weapons)
     } catch (err) {
         console.log('WE GOT AN ERROR');

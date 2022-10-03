@@ -1,16 +1,40 @@
 // import { response } from 'express';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 import './style.css';
 
 
-const Groups = ({ group }) => { 
-    let link = '/divisions/' + group
-
+const Groups = ({ }) => {
+    
+    const [groups, setGroups] = useState([])
+    
+    
+    useEffect(() => {
+        async function fetchData() {
+            await axios.get('/api/tournament/divisions')
+            .then((response) => {
+                let data = []
+                for (let i = 0; i < response.data.length; i++) {
+                    data.push(response.data[i]['belt_color'])
+                }
+                setGroups(data);
+                
+            })
+            .catch((error) => console.log(error));
+        }
+        fetchData()
+    }, [])
+    
+    
+    
     return (
-        <div >
-            <a href={link}>
-            <h1> {group} </h1> 
+        <div className='ranks'>
+
+            {groups.map((group) => (         
+            <a href={'/divisions/' + group}>
+                <h1 className={'btn btn-primary btn-block'}> {group} </h1>
             </a>
+            ))}
         </div>
     )
 }

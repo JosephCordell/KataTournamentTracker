@@ -100,6 +100,7 @@ const AddParticipantModal = ({ addParticipantModal, setAddParticipantModal }) =>
                                         >
                                             <option value='White'> White Belt </option>
                                             <option value='Yellow'> Yellow Belt </option>
+                                            <option value='Purple'> Purple Belt </option>
                                             <option value='Blue'> Blue Belt </option>
                                             <option value='Green'> Green Belt </option>
                                             <option value='Brown'> Brown Belt </option>

@@ -1,0 +1,10 @@
+.btn {
+    width: 50vh;
+}
+
+.ranks {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}

@@ -37,10 +37,6 @@ const AddParticipantModal = ({ addParticipantModal, setAddParticipantModal }) =>
         fetchData()
     }
 
-    const handleToggle = () => {
-        // setWeaponsDivision(!weaponsDivision);
-    }
-
     return (
         <div>
             <div>

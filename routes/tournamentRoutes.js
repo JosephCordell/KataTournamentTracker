@@ -82,11 +82,4 @@ router.put('/divisions/group', async (req, res) => {
 })
 
 
-
-
-
-
-
-
-
 module.exports = router

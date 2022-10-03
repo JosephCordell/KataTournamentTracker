@@ -25,10 +25,14 @@ Participant.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        rank: {
+        belt_color: {
             type: DataTypes.STRING,
             allowNull: false,
         }, 
+        weapons_division: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         empty_score: {
             type: DataTypes.FLOAT,
             allowNull:true

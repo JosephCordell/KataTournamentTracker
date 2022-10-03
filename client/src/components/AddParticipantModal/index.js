@@ -8,6 +8,7 @@ const AddParticipantModal = ({ addParticipantModal, setAddParticipantModal }) =>
     const [lastName, setLastName] = useState('')
     const [ageGroup, setAgeGroup] = useState('Kids')
     const [rank, setRank] = useState('White Belt')
+    const [weaponsDivision, setWeaponsDivision] = useState('no')
     const [hideModal, setHideModal] = useState(true);
 
 
@@ -17,9 +18,9 @@ const AddParticipantModal = ({ addParticipantModal, setAddParticipantModal }) =>
             first_name: firstName,
             last_name: lastName,
             age_group: ageGroup,
-            rank: rank,
+            weapons_division: weaponsDivision,
+            belt_color: rank,
         }
-        console.log(JSON.stringify(participantDetails));
         const fetchData = async () => {
             await fetch('/api/tournament/addParticipant', {
                 method: 'POST',
@@ -93,11 +94,24 @@ const AddParticipantModal = ({ addParticipantModal, setAddParticipantModal }) =>
                                             value={rank}
                                             onChange={(e) => setRank(e.target.value)}
                                         >
-                                            <option value='White Belt'> White Belt </option>
-                                            <option value='Yellow Belt'> Yellow Belt </option>
-                                            <option value='Blue Belt'> Blue Belt </option>
-                                            <option value='Green Belt'> Green Belt </option>
-                                            <option value='Brown Belt'> Brown Belt </option>
+                                            <option value='White'> White Belt </option>
+                                            <option value='Yellow'> Yellow Belt </option>
+                                            <option value='Purple'> Purple Belt </option>
+                                            <option value='Blue'> Blue Belt </option>
+                                            <option value='Green'> Green Belt </option>
+                                            <option value='Brown'> Brown Belt </option>
+                                        </select>
+                                    </div>
+                                    <div className='form-group'>
+                                        <label className='form-label'>
+                                            Weapons Division:
+                                        </label>
+                                        <select
+                                            value={weaponsDivision}
+                                            onChange={(e) => setWeaponsDivision(e.target.value)}
+                                        >
+                                            <option value='no'> No </option>
+                                            <option value='yes'> Yes </option>
                                         </select>
                                     </div>
                                     <div className='form-group'>
@@ -109,7 +123,7 @@ const AddParticipantModal = ({ addParticipantModal, setAddParticipantModal }) =>
                                             onChange={(e) => setAgeGroup(e.target.value)}
                                         >
                                             <option value='Kids'> Kids </option>
-                                            <option value='Adult/Teens'> Adult/Teens </option>
+                                            <option value='Adult'> Adult/Teens </option>
                                         </select>
                                     </div>
                                     <button className={'btn btn-primary'} type="submit">

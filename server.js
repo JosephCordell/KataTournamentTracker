@@ -5,11 +5,10 @@ const PORT = process.env.PORT || 3001
 const app = express()
 const routes = require('./routes')
 const session = require('express-session')
-const compression = require('compression')
-
+const cors = require('cors')
 const sequelize = require('./config/connections')
 
-app.use(compression({}))
+app.use(cors())
 
 app.use([express.urlencoded({ extended: true }), express.json()])
 

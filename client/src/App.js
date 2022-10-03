@@ -7,6 +7,8 @@ import ScoreCalculator from './components/ScoreCalculator';
 import SignUp from './views/SignUp';
 import axios from 'axios';
 import Login from './views/Login';
+import Divisions from './views/Divisions';
+import Rank from './views/Rank';
 
 function App() {
   const [user, setUser] = useState({
@@ -39,6 +41,9 @@ function App() {
         <Route path='/calculator' element={<ScoreCalculator />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/divisions' element={<Divisions/>} />
+        <Route path='/divisions/:rank' element={<Rank/>} />
+        <Route path='/divisions/:rank/:age' element={<Rank/>} />
       </Routes>
     </BrowserRouter>
   );

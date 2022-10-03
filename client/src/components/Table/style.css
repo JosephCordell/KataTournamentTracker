@@ -1,0 +1,87 @@
+.container {
+    padding-top: 30px;
+    width: 80%;
+    margin: auto;
+    color: black
+
+  }
+  .body{
+    color: black
+  }
+  
+  .input {
+    padding: 5px 15px;
+    width: 300px;
+  }
+  
+  .user-list {
+    margin-top: 30px;
+  }
+  
+  .user {
+    list-style: none;
+    margin: 10px 0;
+    padding: 10px;
+    background: #eee;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .user-id {
+    color: red;
+    margin-right: 20px;
+  }
+  
+  .user-name {
+    color: blue;
+  }
+  
+  .user-age {
+    margin-left: auto;
+  }
+  
+  table {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  
+  tr {
+    text-align: center;
+    background-color: #50586C;
+    
+    border-right: 1px black;
+    border-left: 1px black;
+  
+  }
+  
+  tr.odd {
+    background-color: #DCE2F0;
+  }
+  
+  tr:hover {
+    background-color: rgb(151, 151, 151);
+  }
+  
+  img {
+    border: 2px solid black;
+    border-radius: 100px;
+  }
+  
+  th {
+    text-align: center;
+    border: 1px solid black;
+  }
+  
+  .header {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .hover:hover {
+    cursor: pointer;
+  }
+  
+  .noResults {
+    text-align: center;
+    font-size: 3rem;
+  }

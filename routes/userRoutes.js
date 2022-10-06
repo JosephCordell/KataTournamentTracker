@@ -59,7 +59,7 @@ router.post('/logout', (req, res) => {
 });
 
 // Creates User
-router.post('/signup', async (req, res) => {
+/* router.post('/signup', async (req, res) => {
     try {
         const userData = await User.create(req.body);
         req.session.save(() => {
@@ -72,7 +72,7 @@ router.post('/signup', async (req, res) => {
         console.log(err);
         res.status(400).json(err);
     }
-});
+}); */
 
 router.put('/update', authorization, async (req, res) => {
     try {

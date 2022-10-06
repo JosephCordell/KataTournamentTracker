@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import axios from 'axios'
 import Table from '../components/Table';
+import EditScoreModal from '../components/EditScoreModal'
 
 
 export default function Rank() {
@@ -10,8 +11,20 @@ export default function Rank() {
     const [participants, setParticipants] = useState([])
     const [weapons, setWeapons] = useState([])
     const [age, setAge] = useState('')
+    const [parData, setParData] = useState([])
+
     let link = '/divisions/' + rank
     let childrenRanks = ['yellow', 'purple', 'blue']
+  const [editScoreModal, setEditScoreModal] = useState(false);
+
+
+    const editScore = () => {
+        console.log('EDITING SCORE??');
+        console.log(parData);
+    }
+
+
+
 
     const getData = (age) => {
         setAge(age)
@@ -46,9 +59,9 @@ export default function Rank() {
             {age ? (
                 <div>
                     <h1 className='fairwoodTitle'> {rank} Belt Empty Hand Division </h1>
-                    <Table participants={participants} />
+                    <Table participants={participants} parData={parData} setParData={setParData} editScore={editScore}/>
                     <h1 className='fairwoodTitle'> {age} Weapons division </h1>
-                    <Table participants={weapons} weapons={true} />
+                    <Table participants={weapons} weapons={true} parData={parData} setParData={setParData} editScore={editScore}/>
                 </div>
             )
                 :

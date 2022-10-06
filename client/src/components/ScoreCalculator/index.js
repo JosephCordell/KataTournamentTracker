@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./style.css"
 
-export default function ScoreCalculator({ topScore = 10, lowScore = 0 }) {
+export default function ScoreCalculator({ finalScore, setFinalScore, topScore = 10, lowScore = 7 }) {
 
     const [judge1, setJudge1] = useState()
     const [judge2, setJudge2] = useState()
     const [judge3, setJudge3] = useState()
     const [judge4, setJudge4] = useState()
     const [judge5, setJudge5] = useState()
-    const [finalScore, setFinalScore] = useState()
 
     useEffect(() => {
         let scores = [judge1, judge2, judge3, judge4, judge5]
@@ -20,8 +19,8 @@ export default function ScoreCalculator({ topScore = 10, lowScore = 0 }) {
             scores.pop()
             scores.shift()
                 scores = (scores.reduce((a, b) => a + b) / scores.length).toFixed(2)
-                if (judge1 > 10 || judge2 > 10 || judge3 > 10 || judge4 > 10 || judge5 > 10) setFinalScore(`A score is higher than ${topScore}`)
-                else if (judge1 < 0 || judge2 < 0 || judge3 < 0 || judge4 < 0 || judge5 < 0) setFinalScore(`A score is lower than ${lowScore}`)
+                if (judge1 > topScore || judge2 > topScore || judge3 > topScore || judge4 > topScore || judge5 > topScore) setFinalScore(`A score is higher than ${topScore}`)
+                else if (judge1 < lowScore || judge2 < lowScore || judge3 < lowScore || judge4 < lowScore || judge5 < lowScore) setFinalScore(`A score is lower than ${lowScore}`)
                 else (
 
                     scores === 'NaN' ? setFinalScore('More Scores Needed') : setFinalScore(scores)

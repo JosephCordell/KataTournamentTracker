@@ -123,7 +123,7 @@ const AddParticipantModal = ({ addParticipantModal, setAddParticipantModal }) =>
                                             onChange={(e) => setAgeGroup(e.target.value)}
                                         >
                                             <option value='Kids'> Kids </option>
-                                            <option value='Adult'> Adult/Teens </option>
+                                            <option value='Adults'> Adult/Teens </option>
                                         </select>
                                     </div>
                                     <button className={'btn btn-primary'} type="submit">

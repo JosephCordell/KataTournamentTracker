@@ -7,8 +7,8 @@ import './style.css';
 const Groups = ({ }) => {
     
     const [groups, setGroups] = useState([])
-    
-    
+    const order = ["White", "Yellow", "Purple", "Blue", "Green", "Brown"]
+
     useEffect(() => {
         async function fetchData() {
             await axios.get('/api/tournament/divisions')
@@ -30,7 +30,7 @@ const Groups = ({ }) => {
     return (
         <div className='ranks'>
 
-            {groups.map((group) => (         
+            {order.map((group) => (         
             <a href={'/divisions/' + group}>
                 <h1 className={'btn btn-primary btn-block'}> {group} </h1>
             </a>

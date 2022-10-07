@@ -51,7 +51,7 @@ const Header = ({ user, setUser, loggedIn }) => {
                         {loggedIn ? (
                             <li className={'nav-item'}>
                                 <button onClick={openModal}> Add Participant</button>
-                                <AddParticipantModal addParticipantModal={addParticipantModal} setAddParticipantModal= { setAddParticipantModal} />
+                                <AddParticipantModal addParticipantModal={addParticipantModal} setAddParticipantModal={setAddParticipantModal} />
                             </li>
                         ) : (
                             ''
@@ -64,12 +64,6 @@ const Header = ({ user, setUser, loggedIn }) => {
                 <div className={'login'}>
                     <div className={'collapse navbar-collapse'} classID={'navbarNav'}>
                         <ul className={'navbar-nav'}>
-                            <li className={'nav-item'}>
-                                <a className={'nav-link'} href="/user">
-                                    User
-                                </a>
-                            </li>
-
                             <li onClick={logout} className={'nav-item'}>
                                 <a className={'nav-link'} href="/" classID={'logout'}>
                                     Logout
@@ -87,11 +81,11 @@ const Header = ({ user, setUser, loggedIn }) => {
                                     Login
                                 </a>
                             </li>
-                            <li className={'nav-item'}>
+                            {/*                             <li className={'nav-item'}>
                                 <a className={'nav-link'} href={'/signup'}>
                                     Sign Up
                                 </a>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>

@@ -1,27 +1,60 @@
+import React, { useState } from 'react';
+import EditScoreModal from '../EditScoreModal';
 import './style.css';
 
 
 export default function Table({ participants, weapons = false }) {
+  const [editScoreModal, setEditScoreModal] = useState(false);
+  const [id, setId] = useState()
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [weaponsScore, setWeaponScore] = useState()
+  const [emptyScore, setEmptyScore] = useState()
+  const [parData, setParData] = useState({})
+
+
+
+  const loggedIn = localStorage.getItem('loggedIn')
+  const openModal = (id, firstName, lastName, weaponScore, emptyScore, weapons) => {
+    console.log(id, firstName, lastName, weaponScore, emptyScore, weapons);
+    setParData({ 
+      'id': id, 
+      'firstName': firstName, 
+      'lastName': lastName, 
+      'weaponScore': weaponScore, 
+      'emptyScore': emptyScore, 
+      'weapons': weapons })
+
+    console.log('partydata', parData);
+    console.log(editScoreModal, 'TEST');
+    setEditScoreModal(!editScoreModal)
+  }
   return (
     <div>
+      <EditScoreModal editScoreModal={editScoreModal} parData={parData} weapons={weapons}  setEditScoreModal={setEditScoreModal} />
       <table className={'container'}>
         <thead>
           <tr>
-            <th className={'hover'}>
+            <th >
               First &nbsp;
               <i className="fas fa-sort" />{' '}
             </th>
-            <th className={'hover'}>
+            <th >
               Last &nbsp; <i className="fas fa-sort" />
             </th>
             {weapons ?
-              <th className={'hover'}>
+              <th >
                 Rank &nbsp; <i className="fas fa-sort" />
               </th>
               : ''}
-            <th className={'hover'}>
+            <th >
               Score &nbsp; <i className="fas fa-sort" />
             </th>
+            {loggedIn ?
+              <th >
+                Edit &nbsp; <i className="fas fa-sort" />
+              </th>
+              : ''}
           </tr>
         </thead>
         <tbody>
@@ -35,13 +68,19 @@ export default function Table({ participants, weapons = false }) {
                 <td>{participant.last_name}</td>
                 {weapons ? (
                   <>
-                  <td>{participant.belt_color}</td> 
-                  <td>{participant.weapon_score}</td>
+                    <td>{participant.belt_color}</td>
+                    <td>{participant.weapon_score}</td>
                   </>
-                  ): 
+                ) :
                   <td>{participant.empty_score}</td>
                 }
-                
+                {loggedIn ? (
+                  <>
+                    <td onClick={() => openModal(participant.id, participant.first_name, participant.last_name, participant.weapon_score, participant.empty_score, weapons)} className={'hover'}> EDIT </td>
+                  </>
+                ) :
+                  ''
+                }
               </tr>
             ))
           ) : (

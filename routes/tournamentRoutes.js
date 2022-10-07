@@ -16,18 +16,7 @@ router.post('/addParticipant', /* authorization, */ async (req, res) => {
 
 })
 
-router.post('/addEmptyScore', /* authorization, */ async (req, res) => {
-    try {
-        // let participant = await Participant.findOne({ where: {id: req.id}})
 
-        await EmptyScores.create(req.body)
-        res.status(200).json()
-
-    } catch (err) {
-        res.status(400).json(err);
-    }
-
-})
 
 router.get('/emptyScore', async (req, res) => {
     try {
@@ -81,5 +70,19 @@ router.put('/divisions/group', async (req, res) => {
     }
 })
 
+router.put('/updateScore', /* authorization, */ async (req, res) => {
+    try {
+        req.body.weapons ? 
+        await Participant.update({weapon_score: req.body.weapon_score}, {where: {id: req.body.id}})
+        :
+        await Participant.update({empty_score: req.body.empty_score}, {where: {id: req.body.id}})
+
+        res.status(200).json()
+
+    } catch (err) {
+        res.status(400).json(err);
+    }
+
+})
 
 module.exports = router

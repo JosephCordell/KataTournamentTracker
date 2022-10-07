@@ -2,16 +2,21 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import axios from 'axios'
 import Table from '../components/Table';
+import EditScoreModal from '../components/EditScoreModal'
 
 
 export default function Rank() {
 
-    const { rank } = useParams()
+    const { rank, group } = useParams()
     const [participants, setParticipants] = useState([])
     const [weapons, setWeapons] = useState([])
     const [age, setAge] = useState('')
-    let link = '/divisions/' + rank
+
     let childrenRanks = ['yellow', 'purple', 'blue']
+    let link = '/divisions/' + rank + '/'
+
+
+
 
     const getData = (age) => {
         setAge(age)
@@ -23,7 +28,12 @@ export default function Rank() {
             })
                 .then((response) => {
                     console.log(response.data);
-                    setParticipants(response.data)
+                    let results = response.data 
+                    const comparePoints = (a,b) => {
+                        return b.empty_score - a.empty_score 
+                    }
+                    results.sort(comparePoints)
+                    setParticipants(results)
                 })
                 .catch((err) => console.log(err));
         }
@@ -32,7 +42,14 @@ export default function Rank() {
                 age_group: age
             })
                 .then((response) => {
-                    setWeapons(response.data)
+                    let results = response.data 
+                    const comparePoints = (a,b) => {
+                        return b.weapon_score - a.weapon_score 
+                    }
+                    results.sort(comparePoints)
+                    console.log('results', results);
+
+                    setWeapons(results)
                 })
                 .catch((err) => console.log(err));
         }
@@ -40,10 +57,24 @@ export default function Rank() {
         fetchData2()
     }
 
+    useEffect(() => {
+        console.log(group);
+        if (group) getData(group)
+    }, [])
+
     return (
         <div className='rank'>
             <br></br>
-            {age ? (
+            {group? (
+               <div>
+               <h1 className='fairwoodTitle'> {rank} Belt Empty Hand Division </h1>
+               <Table participants={participants} />
+               <h1 className='fairwoodTitle'> {age} Weapons division </h1>
+               <Table participants={weapons} weapons={true} />
+           </div>
+            )
+            
+            : age ? (
                 <div>
                     <h1 className='fairwoodTitle'> {rank} Belt Empty Hand Division </h1>
                     <Table participants={participants} />
@@ -59,13 +90,17 @@ export default function Rank() {
                         (
                             <div className='rank'>
                                 <h1 className='fairwoodTitle'> Choose an age group </h1>
-
-                                <button type="button" onClick={() => getData('Kids')} className={'btn btn-primary btn-block'}>
+                                <a href={link + 'kids'}>
+                                <button type="button" className={'btn btn-primary btn-block'}>
                                     Kids
                                 </button>
-                                <button type="button" onClick={() => getData('Adults')} className={'btn btn-primary btn-block'}>
+                                </a>
+                                <br></br>
+                                <a href={link + 'Adults'}>
+                                <button type="button"  className={'btn btn-primary btn-block'}>
                                     Adult/teen
                                 </button>
+                                </a>
                             </div>)
                     }
                 </div>

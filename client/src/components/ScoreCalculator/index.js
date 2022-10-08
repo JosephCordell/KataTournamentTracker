@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./style.css"
 
-export default function ScoreCalculator({ finalScore, setFinalScore, topScore = 10, lowScore = 7 }) {
+export default function ScoreCalculator({ finalScore, setFinalScore, topScore = 10, lowScore = 0 }) {
 
     const [judge1, setJudge1] = useState()
     const [judge2, setJudge2] = useState()

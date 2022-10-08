@@ -5,13 +5,8 @@ import './style.css';
 
 export default function Table({ participants, weapons = false }) {
   const [editScoreModal, setEditScoreModal] = useState(false);
-  const [id, setId] = useState()
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [weaponsScore, setWeaponScore] = useState()
-  const [emptyScore, setEmptyScore] = useState()
   const [parData, setParData] = useState({})
-
+  console.log('Participants', participants)
 
 
   const loggedIn = localStorage.getItem('loggedIn')

@@ -1,10 +1,10 @@
 // import { response } from 'express';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios'
+import React from 'react';
+// import axios from 'axios'
 import './style.css';
 
 
-const Groups = ({ }) => {
+const Groups = () => {
     
     // const [groups, setGroups] = useState([])
     const order = ["White", "Yellow", "Purple", "Blue", "Green", "Brown"]

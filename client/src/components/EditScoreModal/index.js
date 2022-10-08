@@ -10,7 +10,6 @@ const EditScoreModal = ({ editScoreModal, setEditScoreModal, parData, weapons })
 
     const submitScore = async () => {
         if (parseInt(finalScore) === 'number') {
-            console.log(typeof(finalScore));
         } else {
 
             let newScore = {
@@ -19,11 +18,7 @@ const EditScoreModal = ({ editScoreModal, setEditScoreModal, parData, weapons })
                 "empty_score": finalScore,
                 "weapon_score": finalScore,
             }
-            console.log(newScore);
             await axios.put('/api/tournament/updateScore', newScore)
-                .then((response) => {
-                    console.log(response.data);
-                })
                 .catch((err) => console.log(err));
             window.location.reload();
         }

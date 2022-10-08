@@ -2,10 +2,10 @@ const router = require('express').Router()
 const { Participant, EmptyScores } = require('../models')
 const Sequelize = require('sequelize')
 
-// const { authorization } = require('../config/authorization')
+const { authorization } = require('../config/authorization')
 const jwt = require('jsonwebtoken')
 
-router.post('/addParticipant', /* authorization, */ async (req, res) => {
+router.post('/addParticipant', async (req, res) => {
     try {
         await Participant.create(req.body)
         res.status(200).json()
@@ -70,7 +70,7 @@ router.put('/divisions/group', async (req, res) => {
     }
 })
 
-router.put('/updateScore', /* authorization, */ async (req, res) => {
+router.put('/updateScore',  authorization, async (req, res) => {
     try {
         req.body.weapons ? 
         await Participant.update({weapon_score: req.body.weapon_score}, {where: {id: req.body.id}})

@@ -11,7 +11,6 @@ export default function SignUp() {
 
     const handleSignUp = (e) => {
         e.preventDefault();
-        console.log(JSON.stringify({email, password}));
         const fetchData = async () => {
             await fetch('/api/users/signup', {
                 method: 'POST',

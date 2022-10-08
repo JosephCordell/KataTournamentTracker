@@ -6,12 +6,10 @@ import './style.css';
 export default function Table({ participants, weapons = false }) {
   const [editScoreModal, setEditScoreModal] = useState(false);
   const [parData, setParData] = useState({})
-  console.log('Participants', participants)
 
 
   const loggedIn = localStorage.getItem('loggedIn')
   const openModal = (id, firstName, lastName, weaponScore, emptyScore, weapons) => {
-    console.log(id, firstName, lastName, weaponScore, emptyScore, weapons);
     setParData({ 
       'id': id, 
       'firstName': firstName, 
@@ -20,8 +18,6 @@ export default function Table({ participants, weapons = false }) {
       'emptyScore': emptyScore, 
       'weapons': weapons })
 
-    console.log('partydata', parData);
-    console.log(editScoreModal, 'TEST');
     setEditScoreModal(!editScoreModal)
   }
   return (

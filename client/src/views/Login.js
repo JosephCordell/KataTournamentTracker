@@ -20,9 +20,7 @@ export default function SignIn() {
                 .then((data) => {
                     localStorage.setItem(`loggedIn`, true);
                     localStorage.setItem(`token`, data.token);
-                    localStorage.setItem('todo', data.todo);
-                    localStorage.setItem('ratings', data.ratings);
-                    document.location.replace('/user');
+                    document.location.replace('/');
                 })
                 .catch((err) => {
                     console.log(err);

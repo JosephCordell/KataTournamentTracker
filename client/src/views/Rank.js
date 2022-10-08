@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import axios from 'axios'
 import Table from '../components/Table';
+import EditScoreModal from '../components/EditScoreModal'
 
 export default function Rank() {
 
@@ -66,6 +67,11 @@ export default function Rank() {
         const something = setInterval(() => setRefresh(!refresh), 30000)
         return () => clearInterval(something)
     }, [refresh])
+
+    useEffect(() => {
+        console.log(group);
+        if (group) getData(group)
+    }, [])
 
     return (
         <div className='rank'>

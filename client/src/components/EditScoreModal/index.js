@@ -18,7 +18,13 @@ const EditScoreModal = ({ editScoreModal, setEditScoreModal, parData, weapons })
                 "empty_score": finalScore,
                 "weapon_score": finalScore,
             }
-            await axios.put('/api/tournament/updateScore', newScore)
+            await axios.put('/api/tournament/updateScore', newScore, {
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('token')}`,
+                }
+            })
                 .catch((err) => console.log(err));
             window.location.reload();
         }

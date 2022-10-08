@@ -5,7 +5,6 @@ import './style.css';
 
 
 const Groups = () => {
-    
     // const [groups, setGroups] = useState([])
     const order = ["White", "Yellow", "Purple", "Blue", "Green", "Brown"]
 
@@ -18,21 +17,18 @@ const Groups = () => {
     //                 data.push(response.data[i]['belt_color'])
     //             }
     //             setGroups(data);
-                
     //         })
     //         .catch((error) => console.log(error));
     //     }
     //     fetchData()
     // }, [])
-    
-    
-    
+
     return (
         <div className='ranks'>
-            {order.map((group, i) => (         
-            <a href={'/divisions/' + group} key={i}>
-                <h1 className={'btn btn-primary btn-block'}>{group}</h1>
-            </a>
+            {order.map((group, i) => (
+                <a href={'/divisions/' + group} key={i}>
+                    <h1 className={'btn btn-primary btn-block'}>{group}</h1>
+                </a>
             ))}
         </div>
     )

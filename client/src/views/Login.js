@@ -17,13 +17,12 @@ export default function SignIn() {
                 headers: { 'Content-type': 'application/json' },
             })
                 .then((response) => {
-                    console.log(response.json());
-                    response.json()
+                    return response.json()
                 })
                 .then((data) => {
                     localStorage.setItem(`loggedIn`, true);
                     localStorage.setItem(`token`, data.token);
-                    // document.location.replace('/');
+                    document.location.replace('/');
                 })
                 .catch((err) => {
                     console.log(err);
@@ -98,12 +97,12 @@ export default function SignIn() {
                 </form>
             </div>
 
-            <div style={{ textAlign: 'center' }}>
+{/*             <div style={{ textAlign: 'center' }}>
                 Don't have an account?{' '}
                 <a href="/signup" className={'special-link-small'}>
                     Sign up!
                 </a>
-            </div>
+            </div> */}
         </React.Fragment>
     );
 }

@@ -16,11 +16,14 @@ export default function SignIn() {
                 body: JSON.stringify({ email, password }),
                 headers: { 'Content-type': 'application/json' },
             })
-                .then((response) => response.json())
+                .then((response) => {
+                    console.log(response.json());
+                    response.json()
+                })
                 .then((data) => {
                     localStorage.setItem(`loggedIn`, true);
                     localStorage.setItem(`token`, data.token);
-                    document.location.replace('/');
+                    // document.location.replace('/');
                 })
                 .catch((err) => {
                     console.log(err);

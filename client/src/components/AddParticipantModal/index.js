@@ -24,7 +24,9 @@ const AddParticipantModal = ({ addParticipantModal, setAddParticipantModal }) =>
         const fetchData = async () => {
             await fetch('/api/tournament/addParticipant', {
                 method: 'POST',
-                headers: { 'Content-type': 'application/json' },
+                headers: { 'Content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
                 body: JSON.stringify(participantDetails),
             })
                 .then((response) => {

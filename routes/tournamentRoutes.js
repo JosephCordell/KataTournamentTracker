@@ -5,7 +5,7 @@ const Sequelize = require('sequelize')
 const { authorization } = require('../config/authorization')
 const jwt = require('jsonwebtoken')
 
-router.post('/addParticipant', async (req, res) => {
+router.post('/addParticipant', authorization, async (req, res) => {
     try {
         await Participant.create(req.body)
         res.status(200).json()
@@ -53,7 +53,7 @@ router.get('/divisions', async (req, res) => {
 
 router.put('/divisions/weapons', async (req, res) => {
     try {
-        let weapons = await Participant.findAll({ where: { age_group: req.body.age_group, weapons_division: 'yes'}})
+        let weapons = await Participant.findAll({ where: { age_group: req.body.age_group, weapons_division: 'yes' } })
         res.status(200).json(weapons)
     } catch (err) {
         console.log('WE GOT AN ERROR');
@@ -70,12 +70,12 @@ router.put('/divisions/group', async (req, res) => {
     }
 })
 
-router.put('/updateScore',  authorization, async (req, res) => {
+router.put('/updateScore', authorization, async (req, res) => {
     try {
-        req.body.weapons ? 
-        await Participant.update({weapon_score: req.body.weapon_score}, {where: {id: req.body.id}})
-        :
-        await Participant.update({empty_score: req.body.empty_score}, {where: {id: req.body.id}})
+        req.body.weapons ?
+            await Participant.update({ weapon_score: req.body.weapon_score }, { where: { id: req.body.id } })
+            :
+            await Participant.update({ empty_score: req.body.empty_score }, { where: { id: req.body.id } })
 
         res.status(200).json()
 

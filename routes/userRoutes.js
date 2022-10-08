@@ -10,10 +10,6 @@ router.post('/login', async (req, res) => {
 
         if (decoded.exp > Date.now() / 1000) {
             const userData = await User.findOne({ where: { id: decoded.data } });
-            if (Object.keys(userData).length > 1) {
-                res.status(200).json({ todo: userData.todo, ratings: userData.ratings, logged_in: true });
-                return;
-            }
         }
         res.status(401);
         return;
@@ -39,7 +35,7 @@ router.post('/login', async (req, res) => {
 
             req.session.token = jwt.sign({ data: userData.id }, process.env.JWTSECRET, { expiresIn: '365d' });
 
-            res.status(200).json({ todo: userData.todo, ratings: userData.ratings, logged_in: true, token: req.session.token });
+            res.status(200).json({ logged_in: true, token: req.session.token });
         });
     } catch (err) {
         console.log(err);
@@ -66,7 +62,7 @@ router.post('/signup', async (req, res) => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
             req.session.token = jwt.sign({ data: userData.id }, process.env.JWTSECRET, { expiresIn: '365d' });
-            res.status(200).json({ todo: userData.todo, ratings: userData.ratings, logged_in: true, token: req.session.token });
+            res.status(200).json({ logged_in: true, token: req.session.token });
         });
     } catch (err) {
         console.log(err);

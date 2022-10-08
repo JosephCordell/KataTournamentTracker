@@ -4,30 +4,29 @@ import axios from 'axios'
 import Table from '../components/Table';
 import EditScoreModal from '../components/EditScoreModal'
 
-
 export default function Rank() {
 
     const { rank, group } = useParams()
     const [participants, setParticipants] = useState([])
     const [weapons, setWeapons] = useState([])
     const [age, setAge] = useState('')
-
+    const [rounds, setRounds] = useState(1)
+    const [refresh, setRefresh] = useState(false)
     let childrenRanks = ['yellow', 'purple', 'blue']
     let link = '/divisions/' + rank + '/'
 
 
-
-
+    
     const getData = (age) => {
+        console.log(rounds);
+        setRounds(rounds +1 )
         setAge(age)
-        console.log('got age twice', age);
         async function fetchData() {
             await axios.put('/api/tournament/divisions/group', {
                 belt_color: rank,
                 age_group: age
             })
                 .then((response) => {
-                    console.log(response.data);
                     let results = response.data 
                     const comparePoints = (a,b) => {
                         return b.empty_score - a.empty_score 
@@ -36,26 +35,38 @@ export default function Rank() {
                     setParticipants(results)
                 })
                 .catch((err) => console.log(err));
-        }
-        async function fetchData2() {
-            await axios.put('/api/tournament/divisions/weapons', {
-                age_group: age
-            })
+            }
+            async function fetchData2() {
+                await axios.put('/api/tournament/divisions/weapons', {
+                    age_group: age
+                })
                 .then((response) => {
                     let results = response.data 
                     const comparePoints = (a,b) => {
                         return b.weapon_score - a.weapon_score 
                     }
                     results.sort(comparePoints)
-                    console.log('results', results);
-
                     setWeapons(results)
                 })
                 .catch((err) => console.log(err));
+            }
+            fetchData()
+            fetchData2()
         }
-        fetchData()
-        fetchData2()
-    }
+        
+        useEffect(() => {
+            if (group) getData(group)
+            const something = setInterval(() => setRefresh(!refresh), 30000)
+            return () => clearInterval(something)
+        }, [])
+
+    useEffect(() => {
+        console.log('data Refreshed');
+        if (age) getData(age)
+        if (group) getData(group)
+        const something = setInterval(() => setRefresh(!refresh), 30000)
+        return () => clearInterval(something)
+    }, [refresh])
 
     useEffect(() => {
         console.log(group);
@@ -69,7 +80,7 @@ export default function Rank() {
                <div>
                <h1 className='fairwoodTitle'> {rank} Belt Empty Hand Division </h1>
                <Table participants={participants} />
-               <h1 className='fairwoodTitle'> {age} Weapons division </h1>
+               <h1 className='fairwoodTitle'> {age} Weapons Division </h1>
                <Table participants={weapons} weapons={true} />
            </div>
             )
@@ -90,7 +101,7 @@ export default function Rank() {
                         (
                             <div className='rank'>
                                 <h1 className='fairwoodTitle'> Choose an age group </h1>
-                                <a href={link + 'kids'}>
+                                <a href={link + 'Kids'}>
                                 <button type="button" className={'btn btn-primary btn-block'}>
                                     Kids
                                 </button>

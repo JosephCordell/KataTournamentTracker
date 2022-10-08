@@ -103,19 +103,19 @@ export default function SignUp() {
                         {errors.password2 && <p className="error">{errors.password2}</p>}
                     </div>
 
-                    {/* <div className={'submit-button'}>
+                    <div className={'submit-button'}>
                         <button className={'btn btn-primary'} type="submit">
                             Sign Up
                         </button>
-                    </div> */}
+                    </div>
                 </form>
             </div>
-            <div style={{ textAlign: 'center' }}>
+{/*             <div style={{ textAlign: 'center' }}>
                 Have an account?{' '}
                 <a href="/login" className={'special-link-small'}>
                     Sign in!
                 </a>
-            </div>
+            </div> */}
         </React.Fragment>
     )
 }

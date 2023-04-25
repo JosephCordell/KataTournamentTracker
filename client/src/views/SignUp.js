@@ -110,12 +110,12 @@ export default function SignUp() {
                     </div>
                 </form>
             </div>
-{/*             <div style={{ textAlign: 'center' }}>
+            <div style={{ textAlign: 'center' }}>
                 Have an account?{' '}
                 <a href="/login" className={'special-link-small'}>
                     Sign in!
                 </a>
-            </div> */}
+            </div>
         </React.Fragment>
     )
 }

@@ -1,16 +1,16 @@
 const User = require('./User');
-const Participant = require('./Participant')
+const Participant2023 = require('./Participant2023')
 const EmptyScores = require('./EmptyScores')
 const WeaponScores = require('./WeaponScores')
 
-EmptyScores.belongsTo(Participant, {
+EmptyScores.belongsTo(Participant2023, {
     foreignKey: "id",
-    foreignKey: 'participant_id'
+    foreignKey: 'participant2023_id'
 })
-WeaponScores.belongsTo(Participant, {
+WeaponScores.belongsTo(Participant2023, {
     foreignKey: "id",
-    foreignKey: 'participant_id'
+    foreignKey: 'participant2023_id'
 })
 
 
-module.exports = { User, Participant, EmptyScores, WeaponScores};
+module.exports = { User, Participant2023, EmptyScores, WeaponScores};

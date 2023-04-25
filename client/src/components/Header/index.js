@@ -58,6 +58,7 @@ const Header = ({ user, setUser, loggedIn }) => {
                         )}
                     </ul>
                 </div>
+            <div className="brand">Created by: Sensei Joseph</div>
             </div>
 
             {loggedIn ? (

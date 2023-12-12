@@ -55,11 +55,12 @@ const EditScoreModal = ({ editScoreModal, setEditScoreModal, parData, weapons })
 
                                 <h1 className='fairwoodTitle'> {weapons ? ('Weapons score for ') : ('Empty hand score for ')} {parData.firstName} {parData.lastName} </h1>
                                 <ScoreCalculator finalScore={finalScore} setFinalScore={setFinalScore} />
+                                <div className="buttons">
                                 <h1 className={'btn btn-primary btn-block'} onClick={() => submitScore()}> Submit Score</h1>
-
                                 <button className="close-btn-text" onClick={() => setEditScoreModal(!setEditScoreModal)}>
                                     Close
                                 </button>
+                                </div>
                             </div>
                         </div>
                     </div>

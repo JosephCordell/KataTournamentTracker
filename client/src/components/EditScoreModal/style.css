@@ -1,0 +1,7 @@
+
+.buttons{
+    display:flex;
+    justify-content: center;
+    flex-flow: wrap;
+    border-color: red;
+}

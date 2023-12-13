@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connections');
-const Participant2023 = require('./Participant2023')
+const Participant2024 = require('./Participant2024')
 
 class EmptyScores extends Model {}
 

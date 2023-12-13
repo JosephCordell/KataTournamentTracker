@@ -3,9 +3,9 @@ const sequelize = require('../config/connections')
 const EmptyScores = require('./EmptyScores')
 
 
-class Participant2023 extends Model {}
+class Participant2024 extends Model {}
 
-Participant2023.init(
+Participant2024.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -47,10 +47,10 @@ Participant2023.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'participant2023',
+        modelName: 'participant2024',
     }
 )
 EmptyScores.associate = function (models) {
-    EmptyScores.belongsTo(models.Participant2023, {foreignKey: 'participant2023Id'})
+    EmptyScores.belongsTo(models.Participant2024, {foreignKey: 'participant2024Id'})
 }
-module.exports = Participant2023
+module.exports = Participant2024
